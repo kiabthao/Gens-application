@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css"  href="/resources/style/style.css" />
+<meta charset="ISO-8859-1">
+<title>Create or update</title>
+</head>
+<body>
+ 
+<div th:if="${person.id == null}"><h1>Create new person</h1></div>
+<div th:if="${person.id != null}"><h1>Update person</h1></div>
+
+<a th:href="@{/list}" style="text-decoration: none; float: right"> <input type="submit" value="See list"></a> 
+	
+	  <form th:object="${person}" th:action="@{/person/create}" method="post">
+		 <input type="text" placeholder="enter first name" th:field="*{firstName}"/><br/> <br/>
+		 <input type="text" placeholder="enter last name" th:field="*{lastName}"/><br/> <br/>
+	  	 <input type="text" placeholder="enter age" th:field="*{age}"/> <br/><br/>
+		 <input type="submit" class="button" th:value="Save" />
+		 <input type="hidden" th:field="*{id}"/><br/><br/>
+	</form>	 
+	
+</body>
+</html>
